@@ -1,0 +1,77 @@
+# SecOC Simulator Configuration
+# AUTOSAR Secure Onboard Communication Parameters
+
+secoc:
+  # MAC algorithm: "CMAC-AES128" or "HMAC-SHA256"
+  mac_algorithm: "CMAC-AES128"
+  # Full MAC length in bits (before truncation)
+  mac_length_bits: 128
+  # Truncated MAC length in bits (appended to Secured I-PDU)
+  truncated_mac_bits: 24
+  # Freshness value bit-width
+  freshness_bits: 32
+  # Maximum freshness counter delta for verification tolerance
+  freshness_max_delta: 5
+
+# Symmetric keys per ECU (hex-encoded, 128-bit for AES)
+keys:
+  ecu_gateway:
+    key_id: 1
+    key_hex: "000102030405060708090A0B0C0D0E0F"
+    description: "Central Gateway ECU master key"
+  ecu_brake:
+    key_id: 2
+    key_hex: "1F1E1D1C1B1A19181716151413121110"
+    description: "Brake Control ECU key"
+  ecu_steering:
+    key_id: 3
+    key_hex: "A0A1A2A3A4A5A6A7A8A9AAABACADAEAF"
+    description: "Steering ECU key"
+  ecu_powertrain:
+    key_id: 4
+    key_hex: "B0B1B2B3B4B5B6B7B8B9BABBBCBDBEBF"
+    description: "Powertrain ECU key"
+
+# PDU (Protocol Data Unit) profile definitions
+pdu_profiles:
+  - pdu_id: 0x123
+    name: "BrakeCommand"
+    source_ecu: "ecu_gateway"
+    dest_ecu: "ecu_brake"
+    payload_length: 4
+    freshness_bits: 32
+    truncated_mac_bits: 24
+    description: "Emergency brake activation command"
+
+  - pdu_id: 0x234
+    name: "SteeringAngle"
+    source_ecu: "ecu_gateway"
+    dest_ecu: "ecu_steering"
+    payload_length: 3
+    freshness_bits: 32
+    truncated_mac_bits: 24
+    description: "Steering angle setpoint"
+
+  - pdu_id: 0x345
+    name: "EngineControl"
+    source_ecu: "ecu_gateway"
+    dest_ecu: "ecu_powertrain"
+    payload_length: 4
+    freshness_bits: 32
+    truncated_mac_bits: 28
+    description: "Engine torque/RPM command"
+
+  - pdu_id: 0x456
+    name: "BrakeStatus"
+    source_ecu: "ecu_brake"
+    dest_ecu: "ecu_gateway"
+    payload_length: 2
+    freshness_bits: 32
+    truncated_mac_bits: 24
+    description: "Brake status feedback"
+
+# Logging
+logging:
+  level: "INFO"
+  show_hex_dump: true
+  show_bit_fields: true

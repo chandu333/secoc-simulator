@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "secoc-simulator"
+version = "1.0.0"
+description = "AUTOSAR SecOC message simulator — generates and validates MAC-authenticated CAN frames"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+keywords = [
+    "autosar",
+    "secoc",
+    "can",
+    "automotive",
+    "cybersecurity",
+    "mac",
+    "authentication",
+    "cmac",
+    "hmac",
+    "can-bus",
+    "vehicle-security",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Security :: Cryptography",
+    "Topic :: Software Development :: Testing",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+    "cryptography>=41.0.0",
+    "pyyaml>=6.0.1",
+    "colorama>=0.4.6",
+    "flask>=3.0.0",
+]
+
+[project.scripts]
+secoc-sim = "secoc_simulator.__main__:main"
+
+[project.urls]
+Homepage = "https://github.com/chandu333/secoc-simulator"
+Repository = "https://github.com/chandu333/secoc-simulator"
+Issues = "https://github.com/chandu333/secoc-simulator/issues"
