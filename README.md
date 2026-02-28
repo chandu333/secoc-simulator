@@ -13,6 +13,7 @@ A production-grade Python tool for generating, verifying, and attack-testing MAC
 
 [Quick Start](#-quick-start) •
 [Web Dashboard](#-web-dashboard) •
+[Screenshots](#-screenshots) •
 [CLI Usage](#-cli-usage) •
 [Attack Simulator](#-attack-scenarios) •
 [Configuration](#%EF%B8%8F-configuration) •
@@ -72,6 +73,28 @@ python -m secoc_simulator
 python run_dashboard.py
 # → Open http://localhost:5000
 ```
+
+## 📸 Screenshots
+
+### Dashboard Overview
+![Dashboard Overview](screenshots/dashboard_overview.png)
+
+### Generate Secured Frame
+![Generate Frame](screenshots/generate_frame.png)
+
+### Attack Simulator — All Attacks Detected
+![Attack Simulator](screenshots/attack_simulator.png)
+
+### Verify Secured Frame
+![Verify Frame](screenshots/verify_frame.png)
+
+### ECU Keys & Configuration
+![ECU Keys](screenshots/ecu_keys.png)
+
+### Batch Frame Generation
+![Batch Generate](screenshots/batch_generate.png)
+
+---
 
 ## 🌐 Web Dashboard
 
@@ -199,6 +222,7 @@ secoc-simulator/
 │   ├── logger.py            # Colored terminal logger
 │   ├── types.py             # Type definitions & data structures
 │   └── web_api.py           # Flask REST API + Dashboard
+├── screenshots/             # Dashboard screenshots
 ├── config.yaml              # Default configuration
 ├── run_dashboard.py         # Web dashboard launcher
 ├── setup.py                 # pip install support
